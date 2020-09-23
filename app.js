@@ -6,7 +6,7 @@ var mongoose = require('mongoose');
 app.set('port', process.env.PORT || 3000);
 
 var mongoClient = require('mongodb').MongoClient;
-var indexRouter = require('./routes/index');
+var indexRouter = require('./routes');
 // var usersRouter = require('./routes/users');
 var catalogRouter = require('./routes/catalog')
 
@@ -48,6 +48,7 @@ mongoClient.connect('mongodb://127.0.0.1:27017', function (err, db) {
     })
 });
 app.use('/', indexRouter);
+
 // app.use('/users', usersRouter);
 app.use('/catalog', catalogRouter); 
 app.listen(app.get('port'), function () {
